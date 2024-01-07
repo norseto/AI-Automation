@@ -36,9 +36,11 @@ inputfile_for_ut_gen=$1
 # Ask the user for their preferred testing framework
 read -p "Please enter your preferred testing framework: " framework
 
+script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 # Read the prompts into variables
-prompt=$(<prompts/gen_test_case_1.pmt)
-prompt2=$(<prompts/gen_test_case_2.pmt)
+prompt=$(<${script_dir}/prompts/gen_test_case_1.pmt)
+prompt2=$(<${script_dir}/prompts/gen_test_case_2.pmt)
 
 # Replace the placeholders in the prompt with the user's input and filename
 prompt=${prompt/\$framework/${framework}}
@@ -80,7 +82,7 @@ if ! bito $BITO_CMD_VEP -p "$temp_prompt" -f $inputfile_for_ut_gen -c "context.t
 fi
 
 # Run extract_code.sh on the output file
-./extract_code.sh "${filename}.$"
+${script_dir}/extract_code.sh "${filename}.$"
 rm "${filename}.$"
 
 # Remove the temporary file
