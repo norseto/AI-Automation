@@ -1,6 +1,18 @@
 #!/bin/bash
 #set -x
 
+get_realpath() {
+  local path="$1"
+  local dir=""
+  local link=""
+  while [ -L "$path" ]; do
+    link="$(readlink "$path")"
+    dir="$(dirname "$path")"
+    path="$(cd "$dir" && cd "$(dirname "$link")" && pwd)/$(basename "$link")"
+  done
+  echo "$path"
+}
+
 # Check if bito is installed
 if ! command -v bito &> /dev/null
 then
@@ -36,7 +48,7 @@ inputfile_for_ut_gen=$1
 # Ask the user for their preferred testing framework
 read -p "Please enter your preferred testing framework: " framework
 
-script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+script_dir=$( cd -- "$( dirname -- "$(get_realpath "${BASH_SOURCE[0]}")" )" &> /dev/null && pwd )
 
 # Read the prompts into variables
 prompt=$(<${script_dir}/prompts/gen_test_case_1.pmt)

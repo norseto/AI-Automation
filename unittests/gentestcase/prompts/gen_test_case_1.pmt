@@ -39,6 +39,14 @@ Or:
 
 // Write tests for the rest of the functions or endpoints
 
+Or:
+
+// Tests here
+
+Or:
+
+// Similarly test cases should be written for other functions 
+
 ----------
 
 Now generate a unit test that complies with them.
