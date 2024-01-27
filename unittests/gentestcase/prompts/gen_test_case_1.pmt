@@ -39,22 +39,14 @@ Or:
 
 // Write tests for the rest of the functions or endpoints
 
-Or:
-
-// Tests here
-
-Or:
-
-// Similarly test cases should be written for other functions 
-\
-Or:
-
-// continue testing other functions
-
-Or:
-
-// Add further assertions for the specific error message or behavior
-
+Or also do NOT write a test case with these comment bellow:
+- Tests here
+- Similarly test cases should be written for other functions
+- continue testing other functions
+- Add further assertions for the specific error message or behavior
+- Simulate an error when ...
+- Setup mock and necessary objects here...
+- Add more test cases as necessary for each error path...
 ----------
 
 Now generate a unit test that complies with them.
